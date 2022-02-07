@@ -37,4 +37,24 @@ class PasswordValidatorTest {
         assertEquals("Abksdjahfkjksadhf enthält keine Zahlen.",actual);
     }
 
+    @Test
+    void shouldBeBadAllCapitalLetters(){
+        //GIVEN
+        String testPassword = "A9ADSFGADFGFADGFGFGFGÄÜÖGGAF";
+        //WHEN
+        String actual = PasswordValidator.passwordValidator(testPassword);
+        //THEN
+        assertEquals("A9ADSFGADFGFADGFGFGFGÄÜÖGGAF benötigt mindestens einen Kleinbuchstaben",actual);
+    }
+
+    @Test
+    void shouldBeBadAllLowercase(){
+        //GIVEN
+        String testPassword = "9kjasdhfkäöühsdgkjhasdfkhjafdshk";
+        //WHEN
+        String actual = PasswordValidator.passwordValidator(testPassword);
+        //THEN
+        assertEquals("9kjasdhfkäöühsdgkjhasdfkhjafdshk benötigt mindestens einen Großbuchstaben",actual);
+    }
+
 }
