@@ -8,7 +8,7 @@ import java.util.Locale;
 *
 * - Länge sollte über dem Mindestwert liegen DONE
 * - Zahlen sollen enthalten sein DONE
-* - Groß- und Kleinbuchstaben sollen enthalten sein
+* - Groß- und Kleinbuchstaben sollen enthalten sein DONE
 * - Optional: Mehrere Passwörter checken
 * */
 public class PasswordValidator {
@@ -28,6 +28,14 @@ public class PasswordValidator {
         return passwordToCheck+ " ist ein gutes Passwort.";
     }
 
+    public static String[] passwordValidatorMulti(String[] testPasswords) {
+        String[] validatedPasswords = new String[testPasswords.length];
+        for (int i = 0; i < validatedPasswords.length; i++) {
+            validatedPasswords[i] = passwordValidator(testPasswords[i]);
+        }
+        return validatedPasswords;
+    }
+
     private static boolean containsNoNumbers(String passwordToCheck){
         for (int i = 0; i < passwordToCheck.length(); i++) {
             if (Character.isDigit(passwordToCheck.charAt(i))){
@@ -36,5 +44,6 @@ public class PasswordValidator {
         }
         return true;
     }
+
 
 }

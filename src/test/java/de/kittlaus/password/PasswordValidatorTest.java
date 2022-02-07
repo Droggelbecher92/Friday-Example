@@ -57,4 +57,18 @@ class PasswordValidatorTest {
         assertEquals("9kjasdhfkäöühsdgkjhasdfkhjafdshk benötigt mindestens einen Großbuchstaben",actual);
     }
 
+    @Test
+    void shouldBeOKWithValidArray(){
+        //GIVEN
+        String[] testPasswords =new String[]{"9Kjasdhfkäöühsdgkjhasdfkhjafdshk","3dsklajhfljkfasdljDA"};
+        String[] expectedArray = new String[]{"9Kjasdhfkäöühsdgkjhasdfkhjafdshk ist ein gutes Passwort.","3dsklajhfljkfasdljDA ist ein gutes Passwort."};
+        //WHEN
+        String[] actual = PasswordValidator.passwordValidatorMulti(testPasswords);
+        //THEN
+        assertEquals(2,actual.length);
+        assertEquals("9Kjasdhfkäöühsdgkjhasdfkhjafdshk ist ein gutes Passwort.",actual[0]);
+        assertEquals("3dsklajhfljkfasdljDA ist ein gutes Passwort.",actual[1]);
+        assertArrayEquals(expectedArray,actual);
+    }
+
 }
